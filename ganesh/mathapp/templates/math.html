@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Power of Lamp Filament</title>
+</head>
+<body>
+    <h2>Calculate Power of Lamp Filament (Incandescent Bulb)</h2>
+
+    <p><strong>Formula:</strong> P = I² × R</p>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <label>Intensity (I) in Amperes:</label>
+        <input type="number" name="intensity" step="any" required><br><br>
+
+        <label>Resistance (R) in Ohms:</label>
+        <input type="number" name="resistance" step="any" required><br><br>
+
+        <button type="submit">Calculate Power</button>
+    </form>
+
+    <hr>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if power != None %}
+        <h3>Result</h3>
+        <p>Intensity (I): {{ intensity }} A</p>
+        <p>Resistance (R): {{ resistance }} Ω</p>
+        <h3>Power (P) = {{ power }} Watts</h3>
+    {% endif %}
+</body>
+</html>
